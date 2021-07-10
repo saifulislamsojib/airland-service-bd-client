@@ -1,1 +1,12 @@
+//helpers
+@import "./helpers/colors";
+@import "./helpers/fonts";
+
+//global
 @import "./global";
+
+//components
+@import "./home";
+@import "./booking";
+@import "./login";
+@import "./navbar";
