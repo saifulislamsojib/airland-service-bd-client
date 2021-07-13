@@ -1,0 +1,31 @@
+.login-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  form {
+    text-align: left;
+    padding: 0.5rem;
+    .error {
+      color: $red;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      margin-left: 5px;
+    }
+    input {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: $f-sm;
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 1px solid lightgrey;
+      outline: none;
+      border-radius: 0.3rem;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1px #5e5eff;
+      }
+    }
+  }
+}
