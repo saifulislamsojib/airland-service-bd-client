@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 
-const useForm = (required=[]) => {
+const useForm = (defaultRequired=[]) => {
     const [inputData, setInputData] = useState({});
 
     const [error, setError] = useState({});
+
+    const [required, setRequired] = useState(defaultRequired);
 
     const handleInput = e => {
         const { value, name, files } = e.target;
@@ -77,6 +79,7 @@ const useForm = (required=[]) => {
     return {
         handleInput,
         handleSubmit,
+        setRequired,
         error,
         inputData
     }

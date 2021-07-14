@@ -5,19 +5,24 @@ const Login = () => {
 
     const [newUser, setNewUser] = useState(false);
 
-    const required = newUser?['name', 'email', 'password', 'confirmPassword']:['email', 'password'];
+    const { error, handleInput, handleSubmit, setRequired } = useForm(['email', 'password']);
 
-    const { error, handleInput, handleSubmit } = useForm(required);
+    const handleUser = () => {
+        setNewUser(preValue => !preValue);
+        setRequired(newUser?['email', 'password']:['name', 'email', 'password', 'confirmPassword']);
+    }
 
     const submit = data => {
-        console.log(data)
+        console.log(data);
     }
+
+    const handle = handleSubmit(submit);
 
     return (
         <div className='login-container'>
             <h1>Login</h1>
             <button className="primary-btn">google Login</button>
-            <form onSubmit={handleSubmit(submit)}>
+            <form onSubmit={handle}>
                 {newUser&&<>
                     <input onChange={handleInput} type="text" name="name" placeholder="Name" />
                     {error.name && <span className="error">Name is required</span>}
@@ -30,7 +35,7 @@ const Login = () => {
                     <input onChange={handleInput} type="password" name="confirmPassword" placeholder="Confirm Password" />
                     {error.confirmPassword && <span className="error">Confirm Password is required Minimum 6 characters or Not Matched</span>}
                 </>}
-                <input onChange={() => setNewUser(preValue=> !preValue)}type="checkbox" />
+                <input onChange={handleUser} type="checkbox" />
                 <input type="submit" value="Login" />
             </form>
         </div>
